@@ -5,6 +5,7 @@ try {
     require_once 'pdo_connect.php';
     $sql = 'SELECT Name, Continent, Population FROM Country';
     $result = $db->query($sql);
+    $all = $result->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
     $error = $e->getMessage();
 }
@@ -31,13 +32,25 @@ try {
         <th>Continent</th>
         <th>Population</th>
     </tr>
-    <?php foreach ($db->query($sql) as $row) { ?>
-    <tr>
-        <td><?php echo $row['Name']; ?></td>
-        <td><?php echo $row['Continent']; ?></td>
-        <td><?php echo $row['Population']; ?></td>
-    </tr>
-   <?php } ?>
+    <!--<?php while ($row = $result-> fetch()) { ?>-->
+    <!--<tr>-->
+    <!--    <td><?php echo $row[0]; ?></td>-->
+    <!--    <td><?php echo $row['Continent']; ?></td>-->
+    <!--    <td><?php echo $row['Population']; ?></td>-->
+    <!--</tr>-->
+    <!--<?php } ?>-->
+    
+   <!-- <//?php foreach ($db->query($sql) as $row) { ?>-->
+   <!-- <tr>-->
+   <!--     <td><//?php echo $row['Name']; ?></td>-->
+   <!--     <td><//?php echo $row['Continent']; ?></td>-->
+   <!--     <td><//?php echo $row['Population']; ?></td>-->
+   <!-- </tr>-->
+   <!--<//?php } ?>-->
+   
+   <pre>
+       <?php print_r($all); ?>
+   </pre>
 </table>
 </div>
 
